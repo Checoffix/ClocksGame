@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7165183195827063598}
   - component: {fileID: 7572787908851754665}
   - component: {fileID: 3714183317792846672}
+  - component: {fileID: 3791153481855738538}
   m_Layer: 5
   m_Name: FlyScale
   m_TagString: Untagged
@@ -91,3 +92,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d151ca2363c40d347a99f33630034bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &3791153481855738538
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5322794992124689496}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2ac2a5654dab294f9a52f6864f8db3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

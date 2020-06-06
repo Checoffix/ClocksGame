@@ -16,7 +16,12 @@ public class FlyScale : MonoBehaviour
 	{
 		transform.localPosition = Vector2.zero;                         //Начальная позиция текста по нулям
 		GetComponent<Text>().text = "+" + Score;                        //То что выводит текст
-		rand = new Vector2(Random.Range(-3, 3), Random.Range(-3, 3));	//Задает случайное направление тексту
+		rand = new Vector2(Random.Range(-4, 4), Random.Range(-3, 3));	//Задает случайное направление тексту
 		move = true;
+		//GetComponent<Animation>().Play();
 	}
+	public void StopMotion()
+    {
+		move = false;
+    }
 }

@@ -34,25 +34,25 @@ public class MainScreen : MonoBehaviour
 	{
 		
 		strength -= damage; //Снятие ХП
-		if(strength > 0)	//Проверка на то последний это удар или нет
-        {//Если не последний:
-			score += bonus;							//+бонус
-			Counter.text = "Счет: " + score;		
-			FlyTextPool[FlyNum].StartMotion(bonus);	//Добавление в окно вылетающего текста цифры
-			if (FlyNum == FlyTextPool.Length - 1)	//Танцы с правильным заполнением массива
-            {
+		if (strength > 0)   //Проверка на то последний это удар или нет
+		{//Если не последний:
+			score += bonus;                         //+бонус
+			Counter.text = "Счет: " + score;
+			FlyTextPool[FlyNum].StartMotion(bonus); //Добавление в окно вылетающего текста цифры
+			if (FlyNum == FlyTextPool.Length - 1)   //Танцы с правильным заполнением массива
+			{
 				FlyNum = 0;
 			}
-            else
+			else
 				FlyNum++;
 		}
 		else
-        {//Если последний:
+		{//Если последний:
 			score += bonuseIfCrash;
 			Counter.text = "Счет: " + score;
 			FlyTextPool[FlyNum].StartMotion(bonuseIfCrash);
 			if (FlyNum == FlyTextPool.Length - 1)
-			{
+            { 
 				FlyNum = 0;
 			}
 			else
