@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class ClockShop : MonoBehaviour
 {
-	public Text Counter;
 	public MainScreen Score;//Счет
 	public Button Clock1;//Часы 1
 	public Button Clock2;//Часы 2
@@ -32,7 +31,6 @@ public class ClockShop : MonoBehaviour
 		Score.strength = 2;				//+ к прочности
 		Score.bonus = 2;				//+ к бонусу
 		Score.score -= 10;				//Списание со счета
-		Counter.text = "Счет: " + Score.score;
 		if (Clock1.interactable == true)//Включение интерактивности
 		{
 			Clock1.interactable = false;
@@ -44,7 +42,6 @@ public class ClockShop : MonoBehaviour
 		Score.strength = 3;
 		Score.bonus = 3;
 		Score.score -= 50;
-		Counter.text = "Счет: " + Score.score;
 		if (Clock2.interactable == true)
 		{
 			Clock2.interactable = false;

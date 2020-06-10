@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class DestroyShop : MonoBehaviour
 {
-	public Text Counter;
-	public MainScreen Score;//Счет
-	public Button Destroy1;//Предмет 1
-	public Button Destroy2;//Предмет 2
+	public MainScreen Score;	//Счет
+	public Button Destroy1;		//Предмет 1
+	public Button Destroy2;		//Предмет 2
 
 	void Start() //Убрать интерактивнось всех кнопок
 	{
