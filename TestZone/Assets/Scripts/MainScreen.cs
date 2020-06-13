@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MainScreen : MonoBehaviour
 {
+	#region Все переменые
 	public GameObject Canvas;		//Основной канвас
 	public GameObject Tup;			//Кнопка с часами
 	public Text Counter;			//Счетчик
@@ -16,11 +17,18 @@ public class MainScreen : MonoBehaviour
 	public float bonuseIfCrash = 2; //Бонус при доламывании часов
 	public GameObject FlyTextParent, FlyTextPrefab;         //Родитель текстов и Префаб
 	private int FlyNum;										//Величина массива
-	private FlyScale[] FlyTextPool = new FlyScale[30];		//Массив вылетающих текстов
+	private FlyScale[] FlyTextPool = new FlyScale[30];      //Массив вылетающих текстов
+	#endregion
 	void Start()
 	{
-		score = PlayerPrefs.GetFloat("Score+", score);	//Выводит результат на Старте
-		Counter.text = "Счет: " + score;				//Просто чтобы текст вывелся сразу, а не после клика
+        #region Загрузки данных
+        score = PlayerPrefs.GetFloat("Score+", score);  //Загружает счет
+		bonus = PlayerPrefs.GetFloat("Bonuse+", bonus); //Загружает бонус
+		strength = PlayerPrefs.GetFloat("Strength+", strength); //Загружает прочность
+		damage = PlayerPrefs.GetFloat("Damage+", damage); //Загружает урон
+		bonuseIfCrash = PlayerPrefs.GetFloat("BonuseIfCrash+", bonuseIfCrash); //Загружает урон при доламывании
+        #endregion
+        Counter.text = "Счет: " + score;				//Просто чтобы текст вывелся сразу, а не после клика
 		for (int i = 0; i < FlyTextPool.Length; i++)	//Заполнение массива Префабами вылетающего текста
 		{
 			FlyTextPool[i] = Instantiate(FlyTextPrefab, FlyTextParent.transform).GetComponent<FlyScale>();
@@ -29,6 +37,14 @@ public class MainScreen : MonoBehaviour
 	void Update()
     {
 		Counter.text = "Счет: " + score;
+		#region Сохранение Данных
+		PlayerPrefs.SetFloat("Score+", score); //Сохраняет счет
+		PlayerPrefs.SetFloat("Bonuse+", bonus); //Сохраняет бонус
+		PlayerPrefs.SetFloat("Strength+", strength); //Сохраняет прочность
+		PlayerPrefs.SetFloat("Damage+", damage); //Сохраняет урон
+		PlayerPrefs.SetFloat("BonuseIfCrash+", bonuseIfCrash); //Сохраняет урон при доламывании
+		#endregion
+
 	}
 	private void Accept(int STG, float DMG, float BNS)//Получение новых значений из др Скриптов
 	{
@@ -38,7 +54,6 @@ public class MainScreen : MonoBehaviour
 	}
 	public void OnMouseDown()//При нажатии на "Часы"
 	{
-		
 		strength -= damage; //Снятие ХП
 		if (strength > 0)   //Проверка на то последний это удар или нет
 		{//Если не последний:
@@ -63,8 +78,6 @@ public class MainScreen : MonoBehaviour
 				FlyNum++;
 			//Destroy(this.gameObject);  //Нужно будет добавить, когда разберемся со спавном часов
 		}
-		PlayerPrefs.SetFloat("Score+", score); //Сохраняет результат
-		
 		//Instantiate(Tup);								Жалкая попытка создания объекта (не работает)
 		//Tup.transform.SetParent(Canvas.transform);     
 		//Destroy(this.gameObject);

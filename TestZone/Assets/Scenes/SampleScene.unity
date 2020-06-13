@@ -1708,6 +1708,7 @@ MonoBehaviour:
   Score: {fileID: 360942002}
   Clock1: {fileID: 1480251659}
   Clock2: {fileID: 1289653629}
+  ActCl1: 0
 --- !u!114 &1018431100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2330,7 +2331,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1289653627}
         m_MethodName: SetActive
         m_Mode: 6
@@ -2803,7 +2804,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 1018431099}
         m_MethodName: ClickOnClock1
         m_Mode: 1
