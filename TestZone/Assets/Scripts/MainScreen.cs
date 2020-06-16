@@ -6,19 +6,23 @@ using UnityEngine.UI;
 
 public class MainScreen : MonoBehaviour
 {
-	public GameObject Canvas;       //Основной канвас
+	private GameObject Canvas;       //Основной канвас
 	public GameObject Tup;          //Кнопка с часами
-	public Text Counter;            //Счетчик
+	private GameObject Counter;            //Счетчик
 	public float score = 0;         //Общий счет
 	public float bonus = 1;         //Прибавляемый бонус
 	public float strength = 2;      //Прочность часов
 	public float damage = 1;        //Урон
 	public float bonuseIfCrash = 2; //Бонус при доламывании часов
-	public GameObject FlyTextParent, FlyTextPrefab;         //Родитель текстов и Префаб
+	private GameObject FlyTextParent;
+	public GameObject FlyTextPrefab;         //Родитель текстов и Префаб
 	private int FlyNum;                                     //Величина массива
 	private FlyScale[] FlyTextPool = new FlyScale[15];      //Массив вылетающих текстов
 	void Start()
 	{
+		Canvas = GameObject.Find("MainCanvas");
+		FlyTextParent = GameObject.Find("ParentOfFlyScale");
+		Counter = GameObject.Find("Counter");
 		for (int i = 0; i < FlyTextPool.Length; i++) //Заполнение массива Префабами вылетающего текста
 		{
 			FlyTextPool[i] = Instantiate(FlyTextPrefab, FlyTextParent.transform).GetComponent<FlyScale>();
@@ -37,7 +41,7 @@ public class MainScreen : MonoBehaviour
 		if (strength > 0)   //Проверка на то последний это удар или нет
 		{//Если не последний:
 			score += bonus;                         //+бонус
-			Counter.text = "Счет: " + score;
+			Counter.GetComponent<Text>().text = "Счёт: " + score;
 			FlyTextPool[FlyNum].StartMotion(bonus); //Добавление в окно вылетающего текста цифры
 			if (FlyNum == FlyTextPool.Length - 1)   //Танцы с правильным заполнением массива
 			{
@@ -48,8 +52,9 @@ public class MainScreen : MonoBehaviour
 		}
 		else
 		{//Если последний:
+			strength = 2;
 			score += bonuseIfCrash;
-			Counter.text = "Счет: " + score;
+			Counter.GetComponent<Text>().text = "Счёт: " + score;
 			FlyTextPool[FlyNum].StartMotion(bonuseIfCrash);
 			if (FlyNum == FlyTextPool.Length - 1)
 			{
@@ -57,9 +62,8 @@ public class MainScreen : MonoBehaviour
 			}
 			else
 				FlyNum++;
-			Destroy(this.gameObject);
-			Instantiate(Tup);
-			Tup.transform.SetParent(Canvas.transform);
+			Destroy(gameObject, 0.01f);
+			Instantiate(Tup, Canvas.transform);
 		}
 	}
 }
